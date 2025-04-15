@@ -3,11 +3,13 @@ import React from 'react';
 import WorkoutForm from './WorkoutForm';
 import WorkoutHistory from './WorkoutHistory';
 import BMICalculator from './BMICalculator'; // Import BMICalculator
+import DashboardNavbar from './DashboardNavbar';
 
 const Dashboard = () => {
   return (
     <div>
-      <h2>Welcome to Your Dashboard</h2>
+      <DashboardNavbar /> {/* Add DashboardNavbar here */}
+      <h2>Dashboard</h2>
       <div>
         <WorkoutForm />
         <WorkoutHistory />

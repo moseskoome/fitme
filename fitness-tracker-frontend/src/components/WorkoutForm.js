@@ -7,8 +7,15 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('');
   const [weight, setWeight] = useState('');
   const [message, setMessage] = useState('');
+  const [customExercise, setCustomExercise] = useState('');
+  const [exercises, setExercises] = useState(['Push-up', 'Squat', 'Deadlift', 'Bench Press', 'Pull-up']);
 
-  const exercises = ['Push-up', 'Squat', 'Deadlift', 'Bench Press', 'Pull-up'];
+  const handleAddCustomExercise = () => {
+    if (customExercise.trim() && !exercises.includes(customExercise)) {
+      setExercises([...exercises, customExercise]);
+      setCustomExercise('');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,11 +39,12 @@ const WorkoutForm = () => {
   return (
     <div className="card">
       <h2>Log a Workout</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="workout-form">
         <select
           value={exercise}
           onChange={(e) => setExercise(e.target.value)}
           required
+          className="form-input"
         >
           <option value="">Select an Exercise</option>
           {exercises.map((ex, index) => (
@@ -46,11 +54,22 @@ const WorkoutForm = () => {
           ))}
         </select>
         <input
+          type="text"
+          placeholder="Add Custom Exercise"
+          value={customExercise}
+          onChange={(e) => setCustomExercise(e.target.value)}
+          className="form-input"
+        />
+        <button type="button" onClick={handleAddCustomExercise} className="form-button">
+          Add Exercise
+        </button>
+        <input
           type="number"
           placeholder="Sets"
           value={sets}
           onChange={(e) => setSets(e.target.value)}
           required
+          className="form-input"
         />
         <input
           type="number"
@@ -58,6 +77,7 @@ const WorkoutForm = () => {
           value={reps}
           onChange={(e) => setReps(e.target.value)}
           required
+          className="form-input"
         />
         <input
           type="number"
@@ -65,10 +85,11 @@ const WorkoutForm = () => {
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
           required
+          className="form-input"
         />
-        <button type="submit">Add Workout</button>
+        <button type="submit" className="form-button">Add Workout</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="form-message">{message}</p>}
     </div>
   );
 };

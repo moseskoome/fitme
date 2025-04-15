@@ -7,19 +7,28 @@ import WorkoutForm from './components/WorkoutForm';
 import WorkoutHistory from './components/WorkoutHistory';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
+import Navbar from './components/Navbar';
+import BMICalculator from './components/BMICalculator';
+import Profile from './components/Profile'; // Importing Profile component
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <h1>Fitness Tracker</h1>
         <Routes>
+          
           {/* Regular Routes */}
           <Route path="/" element={<Home />} />
-
+          <Route path="/home" element={<Home />} /> {/* Added route for /home */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/workout-form" element={<WorkoutForm />} />
+          <Route path="/workout-history" element={<WorkoutHistory />} />
+          <Route path="/navbar" element={<Navbar />} />
+          <Route path="/bmi-calculator" element={<BMICalculator />} />
+          <Route path="/profile" element={<Profile />} /> {/* Added route for Profile */}
+
           {/* Protected Routes */}
           <Route
             path="/workout-form"
