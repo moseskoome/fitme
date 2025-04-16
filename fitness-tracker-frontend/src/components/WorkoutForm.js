@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './WorkoutForm.css'; // Import CSS for styling
 
 const WorkoutForm = () => {
   const [exercise, setExercise] = useState('');
@@ -9,6 +10,7 @@ const WorkoutForm = () => {
   const [message, setMessage] = useState('');
   const [customExercise, setCustomExercise] = useState('');
   const [exercises, setExercises] = useState(['Push-up', 'Squat', 'Deadlift', 'Bench Press', 'Pull-up']);
+  const [date, setDate] = useState('');
 
   const handleAddCustomExercise = () => {
     if (customExercise.trim() && !exercises.includes(customExercise)) {
@@ -23,7 +25,7 @@ const WorkoutForm = () => {
       const token = localStorage.getItem('token');
       await axios.post(
         'http://localhost:5000/api/workouts',
-        { exercise, sets, reps, weight },
+        { exercise, sets, reps, weight, date },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setMessage('Workout added successfully!');
@@ -31,15 +33,16 @@ const WorkoutForm = () => {
       setSets('');
       setReps('');
       setWeight('');
+      setDate('');
     } catch (err) {
       setMessage(err.response.data.message || 'Something went wrong');
     }
   };
 
   return (
-    <div className="card">
+    <div className="workout-form-container"> {/* Add a class for styling */}
       <h2>Log a Workout</h2>
-      <form onSubmit={handleSubmit} className="workout-form">
+      <form onSubmit={handleSubmit} className="workout-form"> {/* Add a class for styling */}
         <select
           value={exercise}
           onChange={(e) => setExercise(e.target.value)}
@@ -65,7 +68,7 @@ const WorkoutForm = () => {
         </button>
         <input
           type="number"
-          placeholder="Sets"
+          placeholder="Set count"
           value={sets}
           onChange={(e) => setSets(e.target.value)}
           required
@@ -84,6 +87,13 @@ const WorkoutForm = () => {
           placeholder="Weight"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
+          required
+          className="form-input"
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
           className="form-input"
         />

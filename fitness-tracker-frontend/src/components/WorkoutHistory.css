@@ -1,0 +1,40 @@
+.workout-history-container {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-table-container {
+  margin-bottom: 20px;
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.exercise-table th, .exercise-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.exercise-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.action-button:hover {
+  color: #0056b3;
+}

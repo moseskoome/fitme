@@ -25,10 +25,43 @@ const Signup = () => {
     }
   };
 
+  const styles = {
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundColor: '#f4f4f9',
+    },
+    form: {
+      backgroundColor: '#fff',
+      padding: '20px',
+      borderRadius: '8px',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      width: '100%',
+      maxWidth: '400px',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px',
+    },
+    button: {
+      backgroundColor: '#3498db',
+      color: '#fff',
+      border: 'none',
+      padding: '10px',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      fontSize: '16px',
+    },
+    message: {
+      color: 'red',
+      textAlign: 'center',
+    },
+  };
+
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
+    <div style={styles.container}>
+      <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
           placeholder="Name"
@@ -50,9 +83,9 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" style={styles.button}>Sign Up</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p style={styles.message}>{message}</p>}
     </div>
   );
 };

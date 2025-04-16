@@ -1,9 +1,7 @@
 // src/components/Dashboard.js
 import React from 'react';
-import WorkoutForm from './WorkoutForm';
-import WorkoutHistory from './WorkoutHistory';
-import BMICalculator from './BMICalculator'; // Import BMICalculator
 import DashboardNavbar from './DashboardNavbar';
+import WorkoutHistory from './WorkoutHistory';
 
 const Dashboard = () => {
   return (
@@ -11,9 +9,8 @@ const Dashboard = () => {
       <DashboardNavbar /> {/* Add DashboardNavbar here */}
       <h2>Dashboard</h2>
       <div>
-        <WorkoutForm />
         <WorkoutHistory />
-        <BMICalculator /> {/* Add BMICalculator */}
+        
       </div>
     </div>
   );

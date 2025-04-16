@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const DashboardNavbar = () => {
   const navigate = useNavigate();
@@ -11,9 +12,12 @@ const DashboardNavbar = () => {
   return (
     <nav style={styles.navbar}>
       <h1 style={styles.logo}>FITME</h1>
-      <button onClick={handleLogout} style={styles.logoutButton}>
-        Logout
-      </button>
+      <div style={styles.linksContainer}> {/* Add a container for links */}
+        <Link to="/workout-form" style={styles.link}>LOG WORKOUT</Link> {/* Replace link to Workout Form */}
+        <button onClick={handleLogout} style={styles.logoutButton}>
+          Logout
+        </button>
+      </div>
     </nav>
   );
 };
@@ -30,6 +34,16 @@ const styles = {
   logo: {
     fontSize: '24px',
     fontWeight: 'bold',
+  },
+  linksContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '15px',
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'BLACK',
+    fontSize: '16px',
   },
   logoutButton: {
     backgroundColor: 'red',
