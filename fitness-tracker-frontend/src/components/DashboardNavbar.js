@@ -28,12 +28,14 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
-    backgroundColor: '#66EF10',
+    backgroundColor: '#1f2937',
     color: '#fff',
   },
   logo: {
     fontSize: '24px',
     fontWeight: 'bold',
+    color: 'white',
+    textDecoration: 'none',
   },
   linksContainer: {
     display: 'flex',
@@ -42,7 +44,7 @@ const styles = {
   },
   link: {
     textDecoration: 'none',
-    color: 'BLACK',
+    color: 'white',
     fontSize: '16px',
   },
   logoutButton: {

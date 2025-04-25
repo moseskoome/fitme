@@ -26,19 +26,21 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
-    backgroundColor: '#66EF10',
+    backgroundColor: '#1f2937',
     color: '#fff',
   },
   logo: {
     fontSize: '24px',
     fontWeight: 'bold',
+    color: 'white',
+  
   },
   navLinks: {
     display: 'flex',
     gap: '15px',
   },
   link: {
-    color: 'black',
+    color: 'white',
     textDecoration: 'none',
     fontSize: '18px',
     

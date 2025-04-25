@@ -8,8 +8,10 @@ import WorkoutHistory from './components/WorkoutHistory';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
-import BMICalculator from './components/BMICalculator';
-import Profile from './components/Profile'; // Importing Profile component
+// Importing Profile component
+import Footer from './components/Footer';
+import UserProfile from './components/UserProfile'; // Importing UserProfile component
+import AdminDashboard from './components/AdminDashboard'; // Importing AdminDashboard component
 
 function App() {
   return (
@@ -26,8 +28,9 @@ function App() {
           <Route path="/workout-form" element={<WorkoutForm />} />
           <Route path="/workout-history" element={<WorkoutHistory />} />
           <Route path="/navbar" element={<Navbar />} />
-          <Route path="/bmi-calculator" element={<BMICalculator />} />
-          <Route path="/profile" element={<Profile />} /> {/* Added route for Profile */}
+          
+          <Route path="/profile" element={<ProtectedRoute element={UserProfile} />} /> {/* Added route for UserProfile */}
+          <Route path="/admin-dashboard" element={<ProtectedRoute element={AdminDashboard} />} /> {/* Added route for AdminDashboard */}
 
           {/* Protected Routes */}
           <Route
@@ -39,6 +42,8 @@ function App() {
             element={<ProtectedRoute element={WorkoutHistory} />}
           />
         </Routes>
+        
+        <Footer />
       </div>
     </Router>
   );

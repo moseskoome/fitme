@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './WorkoutForm.css'; // Import CSS for styling
+import './WorkoutForm.css';
 
 const WorkoutForm = () => {
   const [exercise, setExercise] = useState('');
@@ -23,9 +23,14 @@ const WorkoutForm = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
+      if (!date) {
+        setMessage('Please select a valid date.');
+        return;
+      }
+      const formattedDate = new Date(date).toISOString(); // Ensure consistent ISO format
       await axios.post(
         'http://localhost:5000/api/workouts',
-        { exercise, sets, reps, weight, date },
+        { exercise, sets, reps, weight, date: formattedDate },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setMessage('Workout added successfully!');
@@ -35,7 +40,7 @@ const WorkoutForm = () => {
       setWeight('');
       setDate('');
     } catch (err) {
-      setMessage(err.response.data.message || 'Something went wrong');
+      setMessage(err.response?.data?.message || 'Something went wrong');
     }
   };
 

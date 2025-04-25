@@ -9,8 +9,7 @@ const Dashboard = () => {
       <DashboardNavbar /> {/* Add DashboardNavbar here */}
       <h2>Dashboard</h2>
       <div>
-        <WorkoutHistory />
-        
+        <WorkoutHistory />  
       </div>
     </div>
   );

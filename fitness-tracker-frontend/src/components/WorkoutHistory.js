@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { FaEdit, FaTrashAlt, FaSave } from 'react-icons/fa';
 import './WorkoutHistory.css'; // Import CSS for styling
@@ -12,7 +12,7 @@ const WorkoutHistory = () => {
       if (!acc[workout.exercise]) {
         acc[workout.exercise] = {};
       }
-      const date = new Date(workout.date).toLocaleDateString();
+      const date = new Date(workout.date).toISOString().split('T')[0]; // Ensure consistent ISO date format
       if (!acc[workout.exercise][date]) {
         acc[workout.exercise][date] = [];
       }
@@ -22,17 +22,27 @@ const WorkoutHistory = () => {
     setGroupedWorkouts(grouped);
   };
 
-  const fetchWorkouts = async () => {
+  const fetchWorkouts = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found in localStorage');
+        return;
+      }
       const response = await axios.get('http://localhost:5000/api/workouts', {
         headers: { Authorization: `Bearer ${token}` },
       });
       groupByExerciseAndDate(response.data);
     } catch (err) {
-      console.error('Error fetching workouts:', err);
+      if (err.response) {
+        console.error('Error response:', err.response.status, err.response.data);
+      } else if (err.request) {
+        console.error('No response received:', err.request);
+      } else {
+        console.error('Error setting up request:', err.message);
+      }
     }
-  };
+  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -68,7 +78,7 @@ const WorkoutHistory = () => {
 
   useEffect(() => {
     fetchWorkouts();
-  }, []);
+  }, [fetchWorkouts]);
 
   return (
     <div className="workout-history-container"> {/* Add a class for styling */}

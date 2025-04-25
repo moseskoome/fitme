@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar'; // Import Navbar
-import BMICalculator from './BMICalculator'; 
+import Navbar from './Navbar'; // Import Navbar 
 const Home = () => {
   return (
     
@@ -10,9 +9,9 @@ const Home = () => {
       <div style={styles.content}>
         <h2>Welcome to FITME progress tracking</h2>
         <p>Track your workouts and achieve your fitness goals!</p>
-        <img src="\assets\Screenshot (49).png" alt="Fitness tracking" style={{ width: '100%', maxWidth: '500px', marginTop: '20px' }} />
+        
+        <img alt="Reach Your Best" src="https://mapmy-static.mapmyfitness.com/2b92b1f2a35141e9ff2f813211466e87.webp" loading="lazy" width="100%" style={styles.image}></img>
       </div>
-      <BMICalculator />
     </div>
   );
 };
@@ -43,7 +42,15 @@ const styles = {
   content: {
     textAlign: 'center',
     marginTop: '50px',
+    position: 'relative',
+  },
+ 
+  image: {
+    display: 'block',
+    width: '100%',
+    height: 'auto',
   },
 };
+
 
 export default Home;

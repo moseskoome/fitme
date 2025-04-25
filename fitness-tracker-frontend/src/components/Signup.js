@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
 
 const Signup = () => {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -13,15 +14,19 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log('Submitting signup form with data:', { firstName, lastName, email, password }); // Log form data
       const response = await axios.post('http://localhost:5000/api/auth/register', {
-        name,
+        firstName,
+        lastName,
         email,
         password,
       });
+      console.log('Signup response:', response.data); // Log response from backend
       setMessage('User registered successfully');
-      navigate('/dashboard'); // Redirect to Dashboard after successful signup
+      navigate('/dashboard');
     } catch (err) {
-      setMessage(err.response.data.message || 'Something went wrong');
+      console.error('Error during signup:', err); // Log error details
+      setMessage(err.response?.data?.message || 'Something went wrong');
     }
   };
 
@@ -64,9 +69,16 @@ const Signup = () => {
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           required
         />
         <input
