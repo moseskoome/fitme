@@ -1,5 +1,4 @@
 import React from 'react';
-import { HiDotsVertical } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -22,28 +21,34 @@ const Navbar = () => {
 // Inline styles for simplicity
 const styles = {
   navbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 20px',
-    backgroundColor: '#1f2937',
-    color: '#fff',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '1.25rem 2rem',
+      backgroundColor: '#e9eff1', // Match body background color
+      color: '#222',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   logo: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: 'white',
-  
+      fontSize: '1.5rem',
+      fontWeight: '700',
+      color: '#222',
+      textDecoration: 'none',
   },
   navLinks: {
-    display: 'flex',
-    gap: '15px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '1.5rem',
   },
   link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '18px',
-    
+      color: '#222',
+      textDecoration: 'none',
+      fontSize: '1rem',
+      fontWeight: '500',
+      transition: 'color 0.2s ease-in-out',
+      '&:hover': {
+          color: '#2563eb',
+      },
   },
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DashboardNavbar from './DashboardNavbar';
 
 const UserProfile = () => {
   const [profile, setProfile] = useState({
@@ -75,6 +76,9 @@ const UserProfile = () => {
   }, []);
 
   return (
+    <div>
+      <DashboardNavbar /> {/* Include the DashboardNavbar here */}
+    
     <div style={styles.container}>
       <h2>User Profile</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
@@ -150,6 +154,7 @@ const UserProfile = () => {
         </button>
       </form>
       {message && <p style={styles.message}>{message}</p>}
+    </div>
     </div>
   );
 };

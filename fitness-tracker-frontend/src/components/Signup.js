@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
-
+import Navbar from './Navbar'; // Import Navbar component
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -65,6 +65,9 @@ const Signup = () => {
   };
 
   return (
+    <div>
+      <Navbar /> {/* Include Navbar component */}
+   
     <div style={styles.container}>
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
@@ -98,6 +101,7 @@ const Signup = () => {
         <button type="submit" style={styles.button}>Sign Up</button>
       </form>
       {message && <p style={styles.message}>{message}</p>}
+    </div>
     </div>
   );
 };

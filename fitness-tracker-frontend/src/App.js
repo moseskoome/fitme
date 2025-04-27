@@ -7,8 +7,7 @@ import WorkoutForm from './components/WorkoutForm';
 import WorkoutHistory from './components/WorkoutHistory';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
-import Navbar from './components/Navbar';
-// Importing Profile component
+import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile'; // Importing UserProfile component
 import AdminDashboard from './components/AdminDashboard'; // Importing AdminDashboard component

@@ -181,4 +181,5 @@ const WorkoutHistory = () => {
   );
 };
 
+
 export default WorkoutHistory;

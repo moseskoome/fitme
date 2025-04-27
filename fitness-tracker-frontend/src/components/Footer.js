@@ -9,11 +9,11 @@ const Footer = () => {
 const styles = {
   footer: {
     textAlign: 'center',
-    padding: '1px ',
-    backgroundColor: '#1f2937',
-    color: '#f9fafb',
-    position: 'fixed',
-    bottom: 0,
+    padding: '1px',
+    backgroundColor: '#e9eff1', // Match body background color
+    color: '#222',
+    position: 'relative', // Remove fixed positioning
+    bottom: '0',
     width: '100%',
     zIndex: 1000,
   },
